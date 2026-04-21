@@ -6,9 +6,11 @@ public class Peao extends Peca{
 
     @Override
     public boolean movimentoValido(int novalinha, int novacoluna){
-        if(getjogadas() == 0){
-            return math.abs(novalinha - getLinha()) <= 2 && novacoluna == getColuna();
+        if(getJogadas() == 0){
+            return Math.abs(novalinha - getLinha()) <= 2 && novacoluna == getColuna();
         } else {
-            return math.abs(novalinha - getLinha()) == 1 && novacoluna == getColuna();
+            return Math.abs(novalinha - getLinha()) == 1 && novacoluna == getColuna();
         }
+    }
 }
+
