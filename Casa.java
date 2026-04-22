@@ -4,11 +4,13 @@ public class Casa{
     private Peca peca;
 
 
+    
     public Casa(int linha, int coluna){
         this.linha = linha;
         this.coluna = coluna;
         this.peca = null;
     }
+
 
 
     public int getLinha(){

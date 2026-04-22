@@ -17,7 +17,6 @@ public abstract class Peca{
 
 
 
-
     public String getNome(){
         return nome;
     }
@@ -36,7 +35,6 @@ public abstract class Peca{
 
 
 
-    
     public void setNome(String nome){
         this.nome = nome;
     }

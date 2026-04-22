@@ -12,13 +12,16 @@ public class Tabuleiro {
         iniciar();  
     }
 
+
     public void iniciar(){
         for(int j = 0; j < 8; j++){
                 tabuleiro[1][j].setPeca(new Peao("Preto", 1, j, 0));
                 tabuleiro[6][j].setPeca(new Peao("Branco", 6, j, 0));
             }
 
-            
+
+
+
             tabuleiro[0][0].setPeca(new Torre("Preto", 0, 0, 0));
             tabuleiro[0][1].setPeca(new Cavalo("Preto", 0, 1, 0));
             tabuleiro[0][2].setPeca(new Bispo("Preto", 0, 2, 0));
@@ -28,7 +31,7 @@ public class Tabuleiro {
             tabuleiro[0][6].setPeca(new Cavalo("Preto", 0, 6, 0));
             tabuleiro[0][7].setPeca(new Torre("Preto", 0, 7, 0));
 
-            
+
 
 
             tabuleiro[7][0].setPeca(new Torre("Branco", 7, 0, 0));

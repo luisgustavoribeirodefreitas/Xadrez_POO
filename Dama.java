@@ -8,7 +8,4 @@ public class Dama extends Peca{
     public boolean movimentoValido(int novalinha, int novacoluna){
         return (novalinha == getLinha()) || (novacoluna == getColuna()) || (Math.abs(novalinha - getLinha()) == Math.abs(novacoluna - getColuna()));
     }
-
-
-
 }
