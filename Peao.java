@@ -6,22 +6,29 @@ public class Peao extends Peca{
 
     @Override
     public boolean movimentoValido(int novaLinha, int novaColuna){
-        int direcao;
-        if (getCor().equals("Branco")) {
-            direcao = -1;
-        } else {
-            direcao = 1;
+
+        if (novaLinha == getLinha() && novaColuna == getColuna()) {
+            return false;
+        } 
+        
+
+        int direcao = getCor().equals("Branco") ? -1 : 1;
+
+        if(novaColuna == getColuna()){
+            if(getJogadas() == 0){
+                return novaLinha == getLinha() + direcao || 
+                    novaLinha == getLinha() + 2 * direcao;
+            } else {
+                return novaLinha == getLinha() + direcao;
+            }
         }
-        int diferencaLinha = novaLinha - getLinha();
-        int diferencaColuna = Math.abs(novaColuna - getColuna());
-        if (getJogadas() == 0 && diferencaLinha == direcao * 2 && diferencaColuna ==0) {
-            return true;
-    }   if (diferencaLinha == direcao && diferencaColuna ==0) {
-            return  true;
-    }   if (diferencaLinha == direcao && diferencaColuna == 1) {
+
+        if(Math.abs(novaColuna - getColuna()) == 1 && 
+        novaLinha == getLinha() + direcao){
             return true;
         }
-        return false;
+
+    return false;
     }
 }
 
