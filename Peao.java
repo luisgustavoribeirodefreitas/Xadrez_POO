@@ -5,12 +5,17 @@ public class Peao extends Peca{
     }
 
     @Override
-    public boolean movimentoValido(int novalinha, int novacoluna){
-        if(getJogadas() == 0){
-            return Math.abs(novalinha - getLinha()) <= 2 && novacoluna == getColuna();
-        } 
+    public boolean movimentoValido(int novaLinha, int novaColuna){
+        if (novaLinha == getLinha() &&  novaColuna == getColuna()) {
+            return false;
+        }
         else {
-            return Math.abs(novalinha - getLinha()) == 1 && novacoluna == getColuna();
+            if(getJogadas() == 0){
+                return Math.abs(novaLinha - getLinha()) <= 2 && novaColuna == getColuna();
+            } 
+            else {
+                return Math.abs(novaLinha - getLinha()) == 1 && novaColuna == getColuna();
+            }
         }
     }
 }
