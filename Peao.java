@@ -12,8 +12,8 @@ public class Peao extends Peca{
         } else {
             direcao = 1;
         }
-        int diferencaLinha = novalinha - getLinha();
-        int diferencaColuna = Math.abs(novacoluna - getColuna());
+        int diferencaLinha = novaLinha - getLinha();
+        int diferencaColuna = Math.abs(novaColuna - getColuna());
         if (getJogadas() == 0 && diferencaLinha == direcao * 2 && diferencaColuna ==0) {
             return true;
     }   if (diferencaLinha == direcao && diferencaColuna ==0) {
