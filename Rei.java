@@ -6,6 +6,11 @@ public class Rei extends Peca{
 
     @Override
     public boolean movimentoValido(int novaLinha, int novaColuna){
+        if (novaLinha == getLinha() &&  novaColuna == getColuna()) {
+            return false;
+        }
+        else {
         return Math.abs(novaLinha - getLinha()) <= 1 && Math.abs(novaColuna - getColuna()) <= 1;
+        }
     }
 }

@@ -8,7 +8,8 @@ public class Peao extends Peca{
     public boolean movimentoValido(int novalinha, int novacoluna){
         if(getJogadas() == 0){
             return Math.abs(novalinha - getLinha()) <= 2 && novacoluna == getColuna();
-        } else {
+        } 
+        else {
             return Math.abs(novalinha - getLinha()) == 1 && novacoluna == getColuna();
         }
     }

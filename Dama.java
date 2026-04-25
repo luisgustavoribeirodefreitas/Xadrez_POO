@@ -5,7 +5,12 @@ public class Dama extends Peca{
     }
     
     @Override
-    public boolean movimentoValido(int novalinha, int novacoluna){
-        return (novalinha == getLinha()) || (novacoluna == getColuna()) || (Math.abs(novalinha - getLinha()) == Math.abs(novacoluna - getColuna()));
+    public boolean movimentoValido(int novaLinha, int novaColuna){
+        if (novaLinha == getLinha() &&  novaColuna == getColuna()) {
+            return false;
+        }
+        else {
+        return (novaLinha == getLinha()) || (novaColuna == getColuna()) || (Math.abs(novaLinha - getLinha()) == Math.abs(novaColuna - getColuna()));
+        }
     }
 }
