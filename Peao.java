@@ -14,7 +14,7 @@ public class Peao extends Peca{
                 return Math.abs(novaLinha - getLinha()) <= 2 && novaColuna == getColuna();
             } 
             else {
-                return Math.abs(novaLinha - getLinha()) == 1 && novaColuna == getColuna();
+                return Math.abs(novaLinha - getLinha()) == 9 && novaColuna == getColuna();
             }
         }
     }
