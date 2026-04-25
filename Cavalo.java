@@ -5,7 +5,12 @@ public class Cavalo extends Peca{
     }
 
     @Override
-    public boolean movimentoValido(int novalinha, int novacoluna){
-        return (Math.abs(novalinha - getLinha()) == 2 && Math.abs(novacoluna - getColuna()) == 1) || (Math.abs(novalinha - getLinha()) == 1 && Math.abs(novacoluna - getColuna()) == 2);
-    }
+    public boolean movimentoValido(int novaLinha, int novaColuna){
+        if (novaLinha == getLinha() &&  novaColuna == getColuna()) {
+            return false;
+        }
+        else {
+        return (Math.abs(novaLinha - getLinha()) == 2 && Math.abs(novaColuna - getColuna()) == 1) || (Math.abs(novaLinha - getLinha()) == 1 && Math.abs(novaColuna - getColuna()) == 2);
+        }
+    }  
 }
