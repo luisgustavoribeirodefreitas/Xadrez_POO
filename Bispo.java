@@ -1,7 +1,7 @@
 public class Bispo extends Peca{
 
     public Bispo(String cor, int linha, int coluna, int jogadas) {
-        super("Bispo", cor, linha, coluna, jogadas);
+        super("Bispo", cor, linha, coluna, jogadas, "B");
     }
 
     @Override

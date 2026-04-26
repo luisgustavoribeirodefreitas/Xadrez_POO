@@ -110,9 +110,9 @@ public class Tabuleiro {
                 if (peca == null) {
                     System.out.print("[   ]");
                 } else if (peca.getCor().equals("Branco")) {
-                    System.out.print("\033[47;30m[ " + peca.getNome().charAt(0) + " ]\033[0m");
+                    System.out.print("[ " + peca.getSimbolo() + " ]");
                 } else {
-                    System.out.print("\033[40;37m[ " + peca.getNome().charAt(0) + " ]\033[0m");
+                    System.out.print("[ " + peca.getSimbolo() + " ]");
                 }
             }
             System.out.println();

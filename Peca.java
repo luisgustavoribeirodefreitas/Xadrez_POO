@@ -4,15 +4,17 @@ public abstract class Peca{
     private int linha;
     private int coluna; 
     private int jogadas;
+    private String simbolo;
 
 
 
-    public Peca(String nome, String cor, int linha, int coluna, int jogadas){
+    public Peca(String nome, String cor, int linha, int coluna, int jogadas, String simbolo){
         this.nome = nome;
         this.cor = cor;
         this.linha = linha;
         this.coluna = coluna;
         this.jogadas = jogadas;
+        this.simbolo = simbolo;
     }
 
 
@@ -32,6 +34,9 @@ public abstract class Peca{
     public int getJogadas(){
         return jogadas;
     }
+    public String getSimbolo(){
+        return simbolo;
+    }
 
 
 
@@ -50,8 +55,11 @@ public abstract class Peca{
     public void setJogadas(int jogadas){
         this.jogadas = jogadas;
     }
+    public void setSimbolo(String simbolo){
+        this.simbolo = simbolo;
+    }
 
-    
+
 
     public abstract boolean movimentoValido(int novaLinha, int novaColuna);
 
