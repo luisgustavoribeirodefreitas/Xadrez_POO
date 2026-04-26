@@ -1,7 +1,7 @@
 public class Cavalo extends Peca{
 
     public Cavalo(String cor, int linha, int coluna, int jogadas){
-        super("Cavalo", cor, linha, coluna, jogadas);
+        super("Cavalo", cor, linha, coluna, jogadas, "C");
     }
 
     @Override
