@@ -47,6 +47,9 @@ public class Tabuleiro {
 
     public boolean mover(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino, String turno) {
         Peca peca = tabuleiro[linhaOrigem][colunaOrigem].getPeca();
+        Peca destino = tabuleiro[linhaDestino][colunaDestino].getPeca();
+
+        
 
         if (peca == null){
             return false;
@@ -57,38 +60,41 @@ public class Tabuleiro {
         if (!peca.movimentoValido(linhaDestino, colunaDestino)){ 
             return false;
         }
-
-        Peca destino = tabuleiro[linhaDestino][colunaDestino].getPeca();
-
         if (destino != null && destino.getCor().equals(turno)){ 
             return false;
         }
 
+
         if (peca.getNome().equals("Peão")) {
-                boolean ehDiagonal = colunaDestino != colunaOrigem;
-            if (ehDiagonal && destino == null) {
+            boolean diagonal = colunaDestino != colunaOrigem;
+
+            if (diagonal && destino == null) {
                 return false;
             }
-            if (!ehDiagonal && destino != null) {
+            if (!diagonal && destino != null) {
                 return false;
             }
         }
+
 
         if (!peca.getNome().equals("Cavalo")) {
-                int direcaoLinha  = (linhaDestino  > linhaOrigem)  ? 1 : (linhaDestino  < linhaOrigem)  ? -1 : 0;
-                int direcaoColuna = (colunaDestino > colunaOrigem) ? 1 : (colunaDestino < colunaOrigem) ? -1 : 0;
+            int direcaoLinha  = (linhaDestino  > linhaOrigem)  ? 1 : (linhaDestino  < linhaOrigem)  ? -1 : 0;
+            int direcaoColuna = (colunaDestino > colunaOrigem) ? 1 : (colunaDestino < colunaOrigem) ? -1 : 0;
 
-                int linhaAtual  = linhaOrigem  + direcaoLinha;
-                int colunaAtual = colunaOrigem + direcaoColuna;
+            int linhaAtual  = linhaOrigem  + direcaoLinha;
+            int colunaAtual = colunaOrigem + direcaoColuna;
 
-                while (linhaAtual != linhaDestino || colunaAtual != colunaDestino) {
-                    if (tabuleiro[linhaAtual][colunaAtual].getPeca() != null){
-                        return false;
-                    } 
-                    linhaAtual  += direcaoLinha;
-                    colunaAtual += direcaoColuna;
-                }
+            while (linhaAtual != linhaDestino || colunaAtual != colunaDestino){
+
+                if (tabuleiro[linhaAtual][colunaAtual].getPeca() != null){
+                    return false;
+                } 
+                
+                linhaAtual  += direcaoLinha;
+                colunaAtual += direcaoColuna;
+            }
         }
+
 
         tabuleiro[linhaDestino][colunaDestino].setPeca(peca);
         tabuleiro[linhaOrigem][colunaOrigem].removePeca();
