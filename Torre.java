@@ -1,7 +1,7 @@
 public class Torre extends Peca{
 
     public Torre(String cor, int linha, int coluna, int jogadas){
-        super("Torre", cor, linha, coluna, jogadas);
+        super("Torre", cor, linha, coluna, jogadas, "T");
     }
 
     @Override

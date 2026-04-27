@@ -1,26 +1,32 @@
 public class Peao extends Peca{
 
     public Peao(String cor, int linha, int coluna, int jogadas){
-        super("Peão", cor, linha, coluna, jogadas);
+        super("Peão", cor, linha, coluna, jogadas, "P");
     }
 
     @Override
     public boolean movimentoValido(int novaLinha, int novaColuna){
-        int direcao;
-        if (getCor().equals("Branco")) {
-            direcao = -1;
-        } else {
-            direcao = 1;
+        int direcao = getCor().equals("Branco") ? -1 : 1;
+
+        if (novaLinha == getLinha() && novaColuna == getColuna()) {
+            return false;
+        } 
+        
+
+        if(novaColuna == getColuna()){
+            if(getJogadas() == 0){
+                return novaLinha == getLinha() + direcao || 
+                    novaLinha == getLinha() + 2 * direcao;
+            } else {
+                return novaLinha == getLinha() + direcao;
+            }
         }
-        int diferencaLinha = novalinha - getLinha();
-        int diferencaColuna = Math.abs(novacoluna - getColuna());
-        if (getJogadas() == 0 && diferencaLinha == direcao * 2 && diferencaColuna ==0) {
-            return true;
-    }   if (diferencaLinha == direcao && diferencaColuna ==0) {
-            return  true;
-    }   if (diferencaLinha == direcao && diferencaColuna == 1) {
+
+
+        if(Math.abs(novaColuna - getColuna()) == 1 && novaLinha == getLinha() + direcao){
             return true;
         }
+
         return false;
     }
 }
