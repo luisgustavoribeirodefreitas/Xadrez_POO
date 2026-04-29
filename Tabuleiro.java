@@ -1,7 +1,12 @@
+import java.util.Scanner;
+
+
+
+
 public class Tabuleiro {
     
     private Casa[][] tabuleiro = new Casa[8][8];
-
+    private Scanner scanner = new Scanner(System.in);
 
     public Tabuleiro(){
         for(int i = 0; i < 8; i++){
@@ -234,6 +239,43 @@ public class Tabuleiro {
         peca.setColuna(colunaDestino);
         peca.setJogadas(peca.getJogadas() + 1);
 
+
+
+        if (linhaDestino == 0 && peca.getNome().equals("Peão") && peca.getCor().equals("Branco")) {
+            System.out.println("Peão promovido! Escolha a peça para promoção (Dama, Torre, Bispo, Cavalo): ");
+            String escolha = scanner.next();
+            if (escolha.equalsIgnoreCase("Dama")) {
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Branco", linhaDestino, colunaDestino, 0));
+            } else if (escolha.equalsIgnoreCase("Torre")) {
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Torre("Branco", linhaDestino, colunaDestino, 0));
+            } else if (escolha.equalsIgnoreCase("Bispo")) {
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Bispo("Branco", linhaDestino, colunaDestino, 0));
+            } else if (escolha.equalsIgnoreCase("Cavalo")) {
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Cavalo("Branco", linhaDestino, colunaDestino, 0));
+            } else {
+                System.out.println("Escolha inválida! O peão será promovido para Dama por padrão.");
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Branco", linhaDestino, colunaDestino, 0));
+            }
+        }
+
+        if (linhaDestino == 7 && peca.getNome().equals("Peão") && peca.getCor().equals("Preto")) {
+            System.out.println("Peão promovido! Escolha a peça para promoção (Dama, Torre, Bispo, Cavalo): ");
+            String escolha = scanner.next();    
+            if (escolha.equalsIgnoreCase("Dama")) {
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Preto", linhaDestino, colunaDestino, 0));
+            } else if (escolha.equalsIgnoreCase("Torre")) {
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Torre("Preto", linhaDestino, colunaDestino, 0));
+            } else if (escolha.equalsIgnoreCase("Bispo")) {
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Bispo("Preto", linhaDestino, colunaDestino, 0));
+            } else if (escolha.equalsIgnoreCase("Cavalo")) {
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Cavalo("Preto", linhaDestino, colunaDestino, 0));
+            } else {
+                System.out.println("Escolha inválida! O peão será promovido para Dama por padrão.");
+                tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Preto", linhaDestino, colunaDestino, 0));
+            }
+        }
+
+
         return true;
  }
     
@@ -246,11 +288,11 @@ public class Tabuleiro {
             for (int j = 0; j < 8; j++) {
                 Peca peca = tabuleiro[i][j].getPeca();
                 if (peca == null) {
-                    System.out.print("[   ]");
+                    System.out.print("[    ]");
                 } else if (peca.getCor().equals("Branco")) {
-                    System.out.print("[ " + peca.getSimbolo() + " ]");
+                    System.out.print("[ " + peca.getCor().charAt(0)  + peca.getSimbolo() + " ]");
                 } else {
-                    System.out.print("[ " + peca.getSimbolo() + " ]");
+                    System.out.print("[ " + peca.getCor().charAt(0)  + peca.getSimbolo() + " ]");
                 }
             }
             System.out.println();
