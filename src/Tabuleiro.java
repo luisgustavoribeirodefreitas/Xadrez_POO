@@ -232,6 +232,10 @@ public class Tabuleiro {
             }
         }
 
+        if (movimentoDeixaReiEmXeque(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino, turno)){
+            return false;
+        }
+
 
         tabuleiro[linhaDestino][colunaDestino].setPeca(peca);
         tabuleiro[linhaOrigem][colunaOrigem].removePeca();
@@ -273,10 +277,6 @@ public class Tabuleiro {
                 System.out.println("Escolha inválida! O peão será promovido para Dama por padrão.");
                 tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Preto", linhaDestino, colunaDestino, 0));
             }
-        }
-
-        if (movimentoDeixaReiEmXeque(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino, turno)){
-            return false;
         }
 
 
