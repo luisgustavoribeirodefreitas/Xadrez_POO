@@ -18,7 +18,7 @@ public class Tabuleiro {
     }
 
 
-    public void iniciar(){
+    private void iniciar(){
         for(int j = 0; j < 8; j++){
                 tabuleiro[1][j].setPeca(new Peao("Preto", 1, j, 0));
                 tabuleiro[6][j].setPeca(new Peao("Branco", 6, j, 0));
@@ -275,6 +275,10 @@ public class Tabuleiro {
             }
         }
 
+        if (movimentoDeixaReiEmXeque(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino, turno)){
+            return false;
+        }
+
 
         return true;
  }
@@ -289,15 +293,13 @@ public class Tabuleiro {
                 Peca peca = tabuleiro[i][j].getPeca();
                 if (peca == null) {
                     System.out.print("[    ]");
-                } else if (peca.getCor().equals("Branco")) {
-                    System.out.print("[ " + peca.getCor().charAt(0)  + peca.getSimbolo() + " ]");
                 } else {
                     System.out.print("[ " + peca.getCor().charAt(0)  + peca.getSimbolo() + " ]");
                 }
             }
             System.out.println();
         }
-        System.out.println("     a    b    c    d    e    f    g    h");
+        System.out.println("     a     b     c     d     e     f     g     h");
     }
 }
 
