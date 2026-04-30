@@ -49,7 +49,21 @@ public class Tabuleiro {
             tabuleiro[7][7].setPeca(new Torre("Branco", 7, 7, 0));
     }
 
-     public boolean reiEmXeque(String cor) {
+    private Peca escolherPromocao(String cor, int linha, int coluna) {
+        System.out.println("Peão promovido! Escolha a peça (Dama, Torre, Bispo, Cavalo): ");
+        String escolha = scanner.next();
+        switch (escolha.toLowerCase()) {
+            case "dama":   return new Dama(cor,   linha, coluna, 0);
+            case "torre":  return new Torre(cor,  linha, coluna, 0);
+            case "bispo":  return new Bispo(cor,  linha, coluna, 0);
+            case "cavalo": return new Cavalo(cor, linha, coluna, 0);
+            default:
+                System.out.println("Escolha inválida! Promovido para Dama por padrão.");
+                return new Dama(cor, linha, coluna, 0);
+        }
+    }
+
+    public boolean reiEmXeque(String cor) {
         int linhaRei  = -1;
         int colunaRei = -1;
  
@@ -245,38 +259,12 @@ public class Tabuleiro {
 
 
 
-        if (linhaDestino == 0 && peca.getNome().equals("Peão") && peca.getCor().equals("Branco")) {
-            System.out.println("Peão promovido! Escolha a peça para promoção (Dama, Torre, Bispo, Cavalo): ");
-            String escolha = scanner.next();
-            if (escolha.equalsIgnoreCase("Dama")) {
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Branco", linhaDestino, colunaDestino, 0));
-            } else if (escolha.equalsIgnoreCase("Torre")) {
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Torre("Branco", linhaDestino, colunaDestino, 0));
-            } else if (escolha.equalsIgnoreCase("Bispo")) {
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Bispo("Branco", linhaDestino, colunaDestino, 0));
-            } else if (escolha.equalsIgnoreCase("Cavalo")) {
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Cavalo("Branco", linhaDestino, colunaDestino, 0));
-            } else {
-                System.out.println("Escolha inválida! O peão será promovido para Dama por padrão.");
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Branco", linhaDestino, colunaDestino, 0));
-            }
-        }
-
-        if (linhaDestino == 7 && peca.getNome().equals("Peão") && peca.getCor().equals("Preto")) {
-            System.out.println("Peão promovido! Escolha a peça para promoção (Dama, Torre, Bispo, Cavalo): ");
-            String escolha = scanner.next();    
-            if (escolha.equalsIgnoreCase("Dama")) {
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Preto", linhaDestino, colunaDestino, 0));
-            } else if (escolha.equalsIgnoreCase("Torre")) {
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Torre("Preto", linhaDestino, colunaDestino, 0));
-            } else if (escolha.equalsIgnoreCase("Bispo")) {
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Bispo("Preto", linhaDestino, colunaDestino, 0));
-            } else if (escolha.equalsIgnoreCase("Cavalo")) {
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Cavalo("Preto", linhaDestino, colunaDestino, 0));
-            } else {
-                System.out.println("Escolha inválida! O peão será promovido para Dama por padrão.");
-                tabuleiro[linhaDestino][colunaDestino].setPeca(new Dama("Preto", linhaDestino, colunaDestino, 0));
-            }
+        boolean promocaoBranco = peca.getNome().equals("Peão") && peca.getCor().equals("Branco") && linhaDestino == 0;
+        boolean promocaoPreto  = peca.getNome().equals("Peão") && peca.getCor().equals("Preto")  && linhaDestino == 7;
+        if (promocaoBranco || promocaoPreto) {
+            tabuleiro[linhaDestino][colunaDestino].setPeca(
+                escolherPromocao(peca.getCor(), linhaDestino, colunaDestino)
+            );
         }
 
 
