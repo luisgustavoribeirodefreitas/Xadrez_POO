@@ -165,25 +165,26 @@ public class Tabuleiro {
                                 }
                             }
  
-                            boolean caminhoLivre = true;
-                            if (!peca.getNome().equals("Cavalo")) {
-                                int direcaoLinha  = (di > i) ? 1 : (di < i) ? -1 : 0;
-                                int direcaoColuna = (dj > j) ? 1 : (dj < j) ? -1 : 0;
- 
-                                int linhaAtual  = i + direcaoLinha;
-                                int colunaAtual = j + direcaoColuna;
- 
-                                while ((linhaAtual != di || colunaAtual != dj) && caminhoLivre) {
-                                    if (tabuleiro[linhaAtual][colunaAtual].getPeca() != null) {
-                                        caminhoLivre = false;
+                            if (movimentoGeralValido && peaoValido) {
+
+                                boolean caminhoLivre = true;
+                                if (!peca.getNome().equals("Cavalo")) {
+                                    int direcaoLinha  = (di > i) ? 1 : (di < i) ? -1 : 0;
+                                    int direcaoColuna = (dj > j) ? 1 : (dj < j) ? -1 : 0;
+
+                                    int linhaAtual  = i + direcaoLinha;
+                                    int colunaAtual = j + direcaoColuna;
+
+                                    while ((linhaAtual != di || colunaAtual != dj) && caminhoLivre) {
+                                        if (tabuleiro[linhaAtual][colunaAtual].getPeca() != null) {
+                                            caminhoLivre = false;
+                                        }
+                                        linhaAtual  += direcaoLinha;
+                                        colunaAtual += direcaoColuna;
                                     }
-                                    linhaAtual  += direcaoLinha;
-                                    colunaAtual += direcaoColuna;
                                 }
-                            }
- 
-                            if (movimentoGeralValido && peaoValido && caminhoLivre) {
-                                if (!movimentoDeixaReiEmXeque(i, j, di, dj, cor)) {
+
+                                if (caminhoLivre && !movimentoDeixaReiEmXeque(i, j, di, dj, cor)) {
                                     temMovimentoLegal = true;
                                 }
                             }
@@ -192,7 +193,6 @@ public class Tabuleiro {
                 }
             }
         }
- 
         return !temMovimentoLegal;
     }
 
