@@ -117,6 +117,10 @@ public class Tabuleiro {
  
         return xeque;
     }
+
+    public Peca getPeca(int linha, int coluna) {
+    return tabuleiro[linha][coluna].getPeca();
+    }
  
  
     private boolean movimentoDeixaReiEmXeque(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino, String cor) {
