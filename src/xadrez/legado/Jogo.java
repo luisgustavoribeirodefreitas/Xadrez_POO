@@ -1,4 +1,7 @@
+package xadrez.legado;
+
 import java.util.Scanner;
+import xadrez.model.Tabuleiro;
 
 public class Jogo {
     private Tabuleiro tabuleiro;

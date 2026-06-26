@@ -1,3 +1,5 @@
+package xadrez.model;
+
 import java.util.Scanner;
 
 

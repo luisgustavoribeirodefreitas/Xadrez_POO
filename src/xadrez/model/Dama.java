@@ -1,3 +1,5 @@
+package xadrez.model;
+
 public class Dama extends Peca{
 
     public Dama(String cor, int linha, int coluna, int jogadas){

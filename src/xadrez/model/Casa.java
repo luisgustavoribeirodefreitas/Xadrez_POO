@@ -1,3 +1,5 @@
+package xadrez.model;
+
 public class Casa{
     private int linha;
     private int coluna;

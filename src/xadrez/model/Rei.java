@@ -1,3 +1,5 @@
+package xadrez.model;
+
 public class Rei extends Peca{
 
     public Rei(String cor, int linha, int coluna, int jogadas){

@@ -1,3 +1,5 @@
+package xadrez.model;
+
 public class Bispo extends Peca{
 
     public Bispo(String cor, int linha, int coluna, int jogadas) {

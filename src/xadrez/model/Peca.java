@@ -1,3 +1,5 @@
+package xadrez.model;
+
 public abstract class Peca{
     private String nome;
     private String cor;

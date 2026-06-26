@@ -1,3 +1,5 @@
+package xadrez.model;
+
 public class Cavalo extends Peca{
 
     public Cavalo(String cor, int linha, int coluna, int jogadas){

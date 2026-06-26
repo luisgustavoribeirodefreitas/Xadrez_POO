@@ -1,3 +1,5 @@
+package xadrez.model;
+
 public class Torre extends Peca{
 
     public Torre(String cor, int linha, int coluna, int jogadas){

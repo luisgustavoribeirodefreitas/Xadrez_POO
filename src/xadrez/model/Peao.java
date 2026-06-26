@@ -1,3 +1,5 @@
+package xadrez.model;
+
 public class Peao extends Peca{
 
     public Peao(String cor, int linha, int coluna, int jogadas){
