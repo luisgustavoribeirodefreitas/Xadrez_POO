@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Tabuleiro {
     
     private Casa[][] tabuleiro = new Casa[8][8];
-    private Scanner scanner = new Scanner(System.in);
+    private String tipoPromocao = "Dama";    
 
     public Tabuleiro(){
         for(int i = 0; i < 8; i++){
@@ -52,17 +52,15 @@ public class Tabuleiro {
     }
 
     private Peca escolherPromocao(String cor, int linha, int coluna) {
-        System.out.println("Peão promovido! Escolha a peça (Dama, Torre, Bispo, Cavalo): ");
-        String escolha = scanner.next();
-        switch (escolha.toLowerCase()) {
-            case "dama":   return new Dama(cor,   linha, coluna, 0);
-            case "torre":  return new Torre(cor,  linha, coluna, 0);
-            case "bispo":  return new Bispo(cor,  linha, coluna, 0);
-            case "cavalo": return new Cavalo(cor, linha, coluna, 0);
-            default:
-                System.out.println("Escolha inválida! Promovido para Dama por padrão.");
-                return new Dama(cor, linha, coluna, 0);
-        }
+    if (tipoPromocao.equalsIgnoreCase("Torre")) {
+        return new Torre(cor, linha, coluna, 0);
+    } else if (tipoPromocao.equalsIgnoreCase("Bispo")) {
+        return new Bispo(cor, linha, coluna, 0);
+    } else if (tipoPromocao.equalsIgnoreCase("Cavalo")) {
+        return new Cavalo(cor, linha, coluna, 0);
+    } else {
+        return new Dama(cor, linha, coluna, 0);
+    }
     }
 
     public boolean reiEmXeque(String cor) {
@@ -294,6 +292,23 @@ public class Tabuleiro {
             System.out.println();
         }
         System.out.println("     a     b     c     d     e     f     g     h");
+    }
+
+    public void setTipoPromocao(String tipoPromocao) {
+    if (tipoPromocao == null) {
+        this.tipoPromocao = "Dama";
+        return;
+    }
+
+    if (tipoPromocao.equalsIgnoreCase("Torre")) {
+        this.tipoPromocao = "Torre";
+    } else if (tipoPromocao.equalsIgnoreCase("Bispo")) {
+        this.tipoPromocao = "Bispo";
+    } else if (tipoPromocao.equalsIgnoreCase("Cavalo")) {
+        this.tipoPromocao = "Cavalo";
+    } else {
+        this.tipoPromocao = "Dama";
+    }
     }
 }
 

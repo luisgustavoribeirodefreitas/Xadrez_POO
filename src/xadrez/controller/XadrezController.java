@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import xadrez.model.Peca;
+import xadrez.model.Peao;
 import xadrez.model.Tabuleiro;
 import xadrez.view.BotaoCasa;
 import xadrez.view.JanelaPrincipal;
@@ -85,10 +86,23 @@ public class XadrezController {
         Peca pecaOrigem = tabuleiro.getPeca(linhaOrigem, colunaOrigem);
 
         if (pecaOrigem == null) {
+            limparSelecao();
             painelTabuleiro.atualizar(tabuleiro);
-            selecionouOrigem = false;
             janela.setMensagem("Selecione uma peça para mover.");
             return;
+        }
+
+        if (ehPromocaoDePeao(pecaOrigem, linhaDestino)) {
+            String escolha = janela.escolherPromocao();
+
+            if (escolha == null) {
+                limparSelecao();
+                painelTabuleiro.atualizar(tabuleiro);
+                janela.setMensagem("Promoção cancelada. Selecione uma peça.");
+                return;
+            }
+
+            tabuleiro.setTipoPromocao(escolha);
         }
 
         String corDaPeca = pecaOrigem.getCor();
@@ -101,11 +115,10 @@ public class XadrezController {
                 corDaPeca
         );
 
-        painelTabuleiro.atualizar(tabuleiro);
+        tabuleiro.setTipoPromocao("Dama");
 
-        linhaOrigem = -1;
-        colunaOrigem = -1;
-        selecionouOrigem = false;
+        painelTabuleiro.atualizar(tabuleiro);
+        limparSelecao();
 
         if (movimentoValido) {
             trocarCorAtual();
@@ -113,6 +126,24 @@ public class XadrezController {
         } else {
             janela.setMensagem("Movimento inválido. Selecione outra peça.");
         }
+    }
+
+    private boolean ehPromocaoDePeao(Peca peca, int linhaDestino) {
+        if (!(peca instanceof Peao)) {
+            return false;
+        }
+
+        if (peca.getCor().toLowerCase().startsWith("b")) {
+            return linhaDestino == 0;
+        } else {
+            return linhaDestino == 7;
+        }
+    }
+
+    private void limparSelecao() {
+        linhaOrigem = -1;
+        colunaOrigem = -1;
+        selecionouOrigem = false;
     }
 
     private boolean mesmaCor(String cor1, String cor2) {

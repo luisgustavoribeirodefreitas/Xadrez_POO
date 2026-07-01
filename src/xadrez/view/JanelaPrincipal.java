@@ -2,6 +2,7 @@ package xadrez.view;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -40,4 +41,28 @@ public class JanelaPrincipal extends JFrame {
     public void setMensagem(String texto) {
         mensagem.setText(texto);
     }
+
+    public String escolherPromocao() {
+    String[] opcoes = {"Dama", "Torre", "Bispo", "Cavalo"};
+
+    int escolha = JOptionPane.showOptionDialog(
+            this,
+            "Escolha a peça para promover o peão:",
+            "Promoção do Peão",
+            JOptionPane.DEFAULT_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opcoes,
+            opcoes[0]
+    );
+
+    if (escolha == -1) {
+        return null;
+    }
+
+    return opcoes[escolha];
+    }
+
+
+
 }
