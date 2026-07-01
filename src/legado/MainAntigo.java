@@ -1,4 +1,4 @@
-package xadrez.legado;
+package legado;
 
 public class MainAntigo {
     public static void main(String[] args) {

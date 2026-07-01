@@ -1,4 +1,4 @@
-package xadrez.app;
+package xadrez.appjogo;
 
 import javax.swing.SwingUtilities;
 import xadrez.view.JanelaPrincipal;

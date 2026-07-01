@@ -3,6 +3,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "xadrez.appjogo.Main",
+            "projectName": "Trabalho POO_d7907baf"
+        },
+        {
             "type": "jdk",
             "request": "launch",
             "name": "Launch Java App"

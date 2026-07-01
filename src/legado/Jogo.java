@@ -1,4 +1,4 @@
-package xadrez.legado;
+package legado;
 
 import java.util.Scanner;
 import xadrez.model.Tabuleiro;
