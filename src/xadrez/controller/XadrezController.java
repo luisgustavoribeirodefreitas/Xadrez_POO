@@ -122,9 +122,22 @@ public class XadrezController {
 
         if (movimentoValido) {
             trocarCorAtual();
-            janela.setMensagem("Vez das peças " + nomeCorAtual() + ".");
+
+            String corDaVezNoModel = corAtualNoModel();
+
+            if (tabuleiro.xequeMate(corDaVezNoModel)) {
+                if (tabuleiro.reiEmXeque(corDaVezNoModel)) {
+                    janela.setMensagem("Xeque-mate! Vitoria das pecas " + corVencedora() + ".");
+                } else {
+                    janela.setMensagem("Afogamento! Empate.");
+                }
+            } else if (tabuleiro.reiEmXeque(corDaVezNoModel)) {
+                janela.setMensagem("Xeque! Vez das pecas " + nomeCorAtual() + ".");
+            } else {
+                janela.setMensagem("Vez das pecas " + nomeCorAtual() + ".");
+            }
         } else {
-            janela.setMensagem("Movimento inválido. Selecione outra peça.");
+            janela.setMensagem("Movimento invalido. Selecione outra peca.");
         }
     }
 
@@ -170,6 +183,21 @@ public class XadrezController {
             return "brancas";
         } else {
             return "pretas";
+        }
+    }
+    private String corAtualNoModel() {
+        if (corAtual.toLowerCase().startsWith("b")) {
+            return "Branco";
+        } else {
+            return "Preto";
+        }
+    }
+
+    private String corVencedora() {
+        if (corAtual.toLowerCase().startsWith("b")) {
+            return "pretas";
+        } else {
+            return "brancas";
         }
     }
 }
