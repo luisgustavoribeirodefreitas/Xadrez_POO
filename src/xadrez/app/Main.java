@@ -1,10 +1,14 @@
 package xadrez.app;
 
-import xadrez.legado.Jogo;
+import javax.swing.SwingUtilities;
+import xadrez.view.JanelaPrincipal;
 
 public class Main {
     public static void main(String[] args) {
-        Jogo jogo = new Jogo();
-        jogo.iniciar();
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new JanelaPrincipal();
+            }
+        });
     }
 }
