@@ -1,165 +1,113 @@
-# Xadrez POO
-
-Projeto desenvolvido em **Java** para a disciplina de **Programação Orientada a Objetos**, com o objetivo de simular uma partida de xadrez utilizando conceitos de POO, como classes, objetos, herança, encapsulamento, abstração e sobrescrita de métodos.
-
-## Sobre o projeto
-
-O sistema representa um jogo de xadrez executado pelo terminal, permitindo que dois jogadores realizem movimentos alternados entre peças brancas e pretas.
-
-O projeto possui validação de movimentos das principais peças do xadrez, controle de turno, captura de peças, verificação de xeque, xeque-mate, empate por afogamento e promoção de peão.
-
-## Funcionalidades
-
-* Exibição do tabuleiro no terminal;
-* Controle de turno entre peças brancas e pretas;
-* Movimentação das peças por coordenadas, como `a2`, `e4`, `h8`;
-* Validação de movimentos para:
-
-  * Rei;
-  * Dama;
-  * Torre;
-  * Bispo;
-  * Cavalo;
-  * Peão;
-* Captura de peças adversárias;
-* Bloqueio de movimentos inválidos;
-* Verificação de caminho livre para peças que não saltam;
-* Detecção de xeque;
-* Detecção de xeque-mate;
-* Detecção de empate por afogamento;
-* Promoção de peão ao chegar ao final do tabuleiro.
-
-## Conceitos de Programação Orientada a Objetos utilizados
-
-O projeto aplica os seguintes conceitos de POO:
-
-### Classes e objetos
-
-Cada elemento importante do jogo foi representado por classes, como `Peca`, `Tabuleiro`, `Casa`, `Jogo` e as classes específicas das peças.
-
-### Herança
-
-As peças do xadrez herdam da classe abstrata `Peca`, reaproveitando atributos e comportamentos comuns.
-
-Exemplos de classes que herdam de `Peca`:
-
-* `Rei`
-* `Dama`
-* `Torre`
-* `Bispo`
-* `Cavalo`
-* `Peao`
-
-### Abstração
-
-A classe `Peca` define a estrutura base para todas as peças e possui o método abstrato `movimentoValido()`, que é implementado de forma específica em cada peça.
-
-### Encapsulamento
-
-Os atributos das classes são protegidos por modificadores de acesso e manipulados por métodos getters e setters.
-
-### Polimorfismo
-
-Cada peça possui sua própria implementação do método `movimentoValido()`, permitindo que o jogo trate diferentes peças de forma genérica por meio da classe `Peca`.
-
-## Estrutura do projeto
-
-```text
-Xadrez_POO/
-├── README.md
-├── .gitignore
-└── src/
-    ├── Main.java
-    ├── Jogo.java
-    ├── Tabuleiro.java
-    ├── Casa.java
-    ├── Peca.java
-    ├── Rei.java
-    ├── Dama.java
-    ├── Torre.java
-    ├── Bispo.java
-    ├── Cavalo.java
-    └── Peao.java
-```
-
-## Como executar
-
-Para executar o projeto, é necessário ter o **Java JDK** instalado na máquina.
-
-### 1. Clone o repositório
-
-```bash
-git clone URL_DO_REPOSITORIO
-```
-
-### 2. Acesse a pasta do projeto
-
-```bash
-cd Xadrez_POO
-```
-
-### 3. Compile os arquivos Java
-
-```bash
-javac src/*.java
-```
-
-### 4. Execute o programa
-
-```bash
-java -cp src Main
-```
-
-## Como jogar
-
-O jogo é executado pelo terminal. Em cada turno, o jogador deve informar:
-
-1. A coordenada da peça que deseja mover;
-2. A coordenada de destino.
-
-Exemplo:
-
-```text
-Qual peça mover? e2
-Para onde mover? e4
-```
-
-As coordenadas seguem o padrão tradicional do xadrez:
-
-* Colunas: `a` até `h`;
-* Linhas: `1` até `8`.
-
-## Representação das peças
-
-No tabuleiro, as peças são exibidas com a inicial da cor e o símbolo da peça.
-
-Exemplos:
-
-```text
-BR = Rei branco
-BD = Dama branca
-BT = Torre branca
-BP = Peão branco
-
-PR = Rei preto
-PD = Dama preta
-PT = Torre preta
-PP = Peão preto
-```
-
-## Tecnologias utilizadas
-
-* Java
-* Programação Orientada a Objetos
-* Git e GitHub
+# Xadrez POO - MVC
 
 ## Autores
 
-Trabalho desenvolvido em dupla por:
+Trabalho desenvolvido por:
 
-* Luís Gustavo Ribeiro de Freitas — RA: 143379
-* Matheus Pinheiro Faria — RA: 145127
+- Luís Gustavo Ribeiro de Freitas — RA: 143379
+- Matheus Pinheiro Faria — RA: 145127
 
-## Observações
+## Descrição breve
 
-Este projeto foi desenvolvido com fins acadêmicos, com foco na aplicação prática dos conceitos de Programação Orientada a Objetos em Java.
+Este projeto é um jogo de xadrez desenvolvido em **Java** para a disciplina de **Programação Orientada a Objetos**. O sistema foi organizado utilizando o padrão **MVC** e possui uma interface gráfica feita com **Java Swing**, permitindo que dois jogadores movimentem as peças por cliques no tabuleiro.
+
+O projeto aplica conceitos como classes, objetos, herança, encapsulamento, abstração, polimorfismo e sobrescrita de métodos. A versão antiga em terminal foi preservada no pacote `xadrez.legado`, mas a execução principal do projeto é feita pela interface gráfica.
+
+## Sobre o projeto
+
+O jogo representa uma partida de xadrez entre peças brancas e pretas. O jogador seleciona uma peça clicando sobre ela e, em seguida, escolhe a casa de destino.
+
+A interface exibe o tabuleiro em uma janela, mostra as peças com símbolos Unicode e apresenta mensagens ao jogador durante a partida.
+
+## Arquitetura MVC
+
+O projeto foi organizado em três camadas principais:
+
+### Model
+
+O pacote `xadrez.model` contém as classes responsáveis pelos dados e pelas regras do jogo.
+
+Principais classes:
+
+- `Tabuleiro`
+- `Casa`
+- `Peca`
+- `Rei`
+- `Dama`
+- `Torre`
+- `Bispo`
+- `Cavalo`
+- `Peao`
+
+O Model é responsável por validar movimentos, movimentar peças, capturar peças adversárias, verificar xeque, xeque-mate, afogamento e promoção de peão.
+
+### View
+
+O pacote `xadrez.view` contém as classes responsáveis pela interface gráfica.
+
+Principais classes:
+
+- `JanelaPrincipal`
+- `PainelTabuleiro`
+- `BotaoCasa`
+
+A View exibe a janela do jogo, o tabuleiro, as peças e as mensagens para o usuário.
+
+### Controller
+
+O pacote `xadrez.controller` contém a classe responsável por ligar a interface gráfica às regras do jogo.
+
+Classe principal:
+
+- `XadrezController`
+
+O Controller recebe os cliques do usuário, identifica a casa de origem e a casa de destino, chama o `Tabuleiro` para validar o movimento e atualiza a interface após cada jogada.
+
+## Funcionalidades
+
+- Interface gráfica com Java Swing;
+- Exibição do tabuleiro com 64 casas;
+- Peças representadas por símbolos Unicode;
+- Seleção de peça por clique;
+- Seleção de destino por clique;
+- Controle de turno entre brancas e pretas;
+- Validação de movimentos das peças;
+- Captura de peças adversárias;
+- Bloqueio de movimentos inválidos;
+- Verificação de caminho livre para peças que não saltam;
+- Detecção de xeque;
+- Detecção de xeque-mate;
+- Detecção de empate por afogamento;
+- Promoção de peão com escolha pela interface gráfica.
+
+## Peças implementadas
+
+O projeto implementa as seguintes peças:
+
+- Rei
+- Dama
+- Torre
+- Bispo
+- Cavalo
+- Peão
+
+Todas as peças herdam da classe abstrata `Peca` e implementam o método `movimentoValido()` de acordo com suas próprias regras de movimentação.
+
+## Representação visual das peças
+
+Na interface gráfica, as peças são representadas com símbolos Unicode:
+
+```text
+♔ Rei branco
+♕ Dama branca
+♖ Torre branca
+♗ Bispo branco
+♘ Cavalo branco
+♙ Peão branco
+
+♚ Rei preto
+♛ Dama preta
+♜ Torre preta
+♝ Bispo preto
+♞ Cavalo preto
+♟ Peão preto
